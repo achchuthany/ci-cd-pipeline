@@ -1,10 +1,9 @@
 name: Build
 
 on:
-  workflow_run:
-    workflows: ["Validate"]
-    types:
-      - completed
+  workflow_call:
+    inputs:
+      build: {}
 
 env:
   REGISTRY: ghcr.io
