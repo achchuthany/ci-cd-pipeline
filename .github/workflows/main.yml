@@ -16,3 +16,9 @@ jobs:
 
   build:
     uses: ./.github/workflows/build.yml
+    with:
+      workflow: Build
+      ref: ${{ github.ref }}
+      inputs:
+        DOCKER_USERNAME: ${{ github.actor }}
+        DOCKER_PAT: ${{ secrets.DOCKER_PAT }}
