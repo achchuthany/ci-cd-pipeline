@@ -41,7 +41,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node-api
           labels: |
             org.opencontainers.image.title=node-api
-            org.opencontainers.image.description = "Node Sample Application"
           tags: |
             type=ref,event=branch
             type=ref,event=pr
