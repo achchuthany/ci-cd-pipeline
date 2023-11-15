@@ -1,7 +1,5 @@
 name: Validate
 
-on:
-  workflow_call:
 
 jobs:
   validate:

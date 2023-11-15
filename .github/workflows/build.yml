@@ -1,8 +1,5 @@
 name: Build
 
-on:
-  workflow_call:
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -11,6 +8,8 @@ jobs:
   build:
     name: Push to Docker image to GitHub
     runs-on: ubuntu-latest
+
+    needs: validate
 
     permissions:
       contents: read
