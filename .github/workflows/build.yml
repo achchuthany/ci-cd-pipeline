@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+    branches: [DEVELOP]
+    tags:
+      - v**
+  pull_request:
+    branches: [DEVELOP]
+    tags:
+      - v**
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  push_to_registry:
+    name: Push Admissions Service Docker image to Docker Hub
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PAT }}
+
+      - name: Extract metadata (tags, labels) for admissions service
+        id: meta-admissions
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/admissions-service
+          labels: |
+            org.opencontainers.image.title=admissions-service
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
