@@ -1,0 +1,27 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "This is a test project to explore NPM package and docker CI_CD ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achchuthany/ci-cd-pipeline.git"
+  },
+  "keywords": [
+    "CI",
+    "CD",
+    "NODE",
+    "NPM",
+    "DOCKER"
+  ],
+  "author": "Y. Achchuthan",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/achchuthany/ci-cd-pipeline/issues"
+  },
+  "homepage": "https://github.com/achchuthany/ci-cd-pipeline#readme"
+}
