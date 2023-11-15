@@ -1,7 +1,14 @@
 name: Build
 
 on:
-  workflow_call:
+  push:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
+  pull_request:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
 
 env:
   REGISTRY: ghcr.io

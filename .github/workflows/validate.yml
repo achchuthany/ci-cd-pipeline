@@ -1,7 +1,14 @@
 name: Validate
 
 on:
-  workflow_call:
+  push:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
+  pull_request:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
 
 jobs:
   validate:
