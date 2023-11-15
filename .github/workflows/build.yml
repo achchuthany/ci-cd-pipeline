@@ -12,9 +12,9 @@ jobs:
     name: Push to Docker image to GitHub
     runs-on: ubuntu-latest
 
-#    permissions:
-#      contents: read
-#      packages: write
+    permissions:
+      contents: read
+#      packages: read
 
     steps:
       - name: Check out the repo
