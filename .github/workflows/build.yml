@@ -2,8 +2,6 @@ name: Build
 
 on:
   workflow_call:
-    inputs:
-      build: {}
 
 env:
   REGISTRY: ghcr.io
