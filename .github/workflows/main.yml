@@ -9,8 +9,15 @@ on:
     branches: [ "DEVELOP" ]
     tags:
       - v**
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  permissions:
+    contents: read
+    packages: write
+
   validate:
     uses: ./.github/workflows/validate.yml
 
