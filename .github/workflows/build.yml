@@ -16,7 +16,7 @@ env:
 
 jobs:
   push_to_registry:
-    name: Push Admissions Service Docker image to Docker Hub
+    name: Push to Docker image to GitHub
     runs-on: ubuntu-latest
 
     permissions:
@@ -34,15 +34,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PAT }}
 
-      - name: Extract metadata (tags, labels) for admissions service
-        id: meta-admissions
+      - name: Extract metadata (tags, labels)
+        id: meta-node-api
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/admissions-service
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node-api
           labels: |
-            org.opencontainers.image.title=admissions-service
+            org.opencontainers.image.title=node-api
+            org.opencontainers.image.description = "Node Sample Application"
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./api
+          push: true
+          tags: ${{ steps.meta-admissions.outputs.tags }}
+          labels: ${{ steps.meta-admissions.outputs.labels }}

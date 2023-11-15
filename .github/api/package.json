@@ -2,10 +2,10 @@
   "name": "node-api",
   "version": "1.0.0",
   "description": "This is a test project to explore NPM package and docker CI_CD ",
-  "main": "index.js",
+  "main": "../../index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ../../index.js"
   },
   "repository": {
     "type": "git",
