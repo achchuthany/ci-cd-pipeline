@@ -3,9 +3,6 @@ name: Build Pipeline
 on:
   push:
     branches: [DEVELOP]
-    tags:
-      - v**
-
   pull_request:
     branches: [DEVELOP]
     tags:
