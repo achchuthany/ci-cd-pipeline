@@ -9,20 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RUN_JOB_B: ''
-    outputs:
-      env: ${{ steps.set.env }}
     steps:
       - name: Step A
-        run: echo "A"
-      - name: Set environment variable
-        id: set
         run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
 
   b:
     name: b
     runs-on: ubuntu-latest
     needs: a
-    if: ${{ needs.a.outputs.env.RUN_JOB_B == 'yes' }}
+    if: ${{ env.RUN_JOB_B == 'yes' }}
     steps:
       - name: Step B
         run: echo "B"
