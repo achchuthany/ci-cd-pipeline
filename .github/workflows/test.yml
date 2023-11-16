@@ -7,8 +7,6 @@ jobs:
   a:
     name: a
     runs-on: ubuntu-latest
-    env:
-      RUN_JOB_B: ''
     steps:
       - name: Step A
         run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
