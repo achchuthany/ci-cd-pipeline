@@ -1,29 +1,38 @@
 name: test
+
 on:
   workflow_dispatch:
+
 jobs:
   a:
     name: a
     runs-on: ubuntu-latest
+    outputs:
+      run_job_b: ${{ steps.set.outputs.run_job_b }}
     steps:
-      - run: echo "A"
-      - id: set
-        run: echo "run_job_b=yes" >> "$GITHUB_OUTPUT"
+      - name: Step A
+        run: echo "A"
+      - name: Set output
+        id: set
+        run: |
+          echo "::set-output name=run_job_b::yes"
 
   b:
     name: b
     runs-on: ubuntu-latest
-    needs:
-      - a
-    if: needs.a.outputs.run_job_b == 'yes'
+    needs: a
+    if: ${{ needs.a.outputs.run_job_b == 'yes' }}
     steps:
-      - run: echo "B"
+      - name: Step B
+        run: echo "B"
+
   c:
     name: c
     runs-on: ubuntu-latest
     needs:
       - a
       - b
-    if: needs.b.result == 'success' || needs.b.result == 'skipped'
+    if: ${{ needs.b.result == 'success' || needs.b.result == 'skipped' }}
     steps:
-      - run: echo "C"
+      - name: Step C
+        run: echo "C"
