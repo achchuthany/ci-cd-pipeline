@@ -11,7 +11,10 @@ jobs:
       RUN_JOB_B: ''
     steps:
       - name: Step A
-        run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
+#        run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
+         run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
+        # run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
+        # run: echo "RUN
 
   b:
     name: b
