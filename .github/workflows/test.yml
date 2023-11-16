@@ -16,7 +16,7 @@ jobs:
         run: echo "A"
       - name: Set environment variable
         id: set
-        run: echo "RUN_JOB_B=yes >> $GITHUB_ENV"
+        run: echo "RUN_JOB_B='yes'" >> $GITHUB_ENV
 
   b:
     name: b
