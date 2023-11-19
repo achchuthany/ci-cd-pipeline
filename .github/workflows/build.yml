@@ -1,8 +1,8 @@
-name: Build
+name: BuildExecutor
 
 on:
   workflow_run:
-    workflows: [Validate]
+    workflows: [TestRunner]
     types:
       - completed
 
