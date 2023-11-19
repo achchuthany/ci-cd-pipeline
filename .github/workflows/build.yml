@@ -2,7 +2,7 @@ name: Build
 
 on:
   workflow_run:
-    workflows: [validate]
+    workflows: [Validate]
     types:
       - completed
 
@@ -50,3 +50,14 @@ jobs:
           push: true
           tags: ${{ steps.meta-node-api.outputs.tags }}
           labels: ${{ steps.meta-node-api.outputs.labels }}
+
+#      - name: Import Secrets
+#          id: import-secrets
+#          uses: hashicorp/vault-action@v2
+#          with:
+#            url: https://vault.myuoj.xyz
+#            method: approle
+#            roleId: ${{ secrets.VAULT_ROLE_ID }}
+#            secretId: ${{ secrets.VAULT_SECRET_ID }}
+#            secrets: |
+#              secret/data/services/admission  *

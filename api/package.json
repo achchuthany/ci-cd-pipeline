@@ -26,5 +26,8 @@
   "homepage": "https://github.com/achchuthany/ci-cd-pipeline#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "node-vault": "^0.10.2"
   }
 }
