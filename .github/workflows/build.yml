@@ -1,14 +1,14 @@
 name: BuildExecutor
 
 on:
-  workflow_run:
-    workflows: [TestRunner]
-    push:
-      branches: [ "DEVELOP" ]
-      tags:
-        - v**
-    types:
-      - completed
+  push:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
+  pull_request:
+    branches: [ "DEVELOP" ]
+    tags:
+      - v**
 
 env:
   REGISTRY: ghcr.io
