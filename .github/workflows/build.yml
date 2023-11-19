@@ -2,13 +2,14 @@ name: BuildExecutor
 
 on:
   push:
-    branches: [ "DEVELOP" ]
+    branches: [DEVELOP]
     tags:
       - v**
   pull_request:
-    branches: [ "DEVELOP" ]
+    branches: [DEVELOP]
     tags:
       - v**
+
 
 env:
   REGISTRY: ghcr.io

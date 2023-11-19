@@ -2,11 +2,11 @@ name: TestRunner
 
 on:
   push:
-    branches: [ "DEVELOP" ]
+    branches: [DEVELOP]
     tags:
       - v**
   pull_request:
-    branches: [ "DEVELOP" ]
+    branches: [DEVELOP]
     tags:
       - v**
 
